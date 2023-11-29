@@ -1,7 +1,8 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
-import router from "./app/routes/routes";
 import httpStatus from "http-status";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import routes from "./app/routes/routes";
 
 const app: Application = express();
 
@@ -12,13 +13,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Router Calling
 
-app.use("/api/v1", router);
+app.use("/api/v1", routes);
+
+app.use(globalErrorHandler);
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).json({
     statusCode: res.statusCode,
     success: true,
-    message: "Route is working",
+    message: "Server is working",
   });
 });
 
