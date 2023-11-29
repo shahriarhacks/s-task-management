@@ -12,7 +12,8 @@ export const createUser: RequestHandler = async (req, res, next) => {
       statusCode: httpStatus.CREATED,
       success: true,
       message: "Create User Successfully",
-      data: result,
+      token: result.token,
+      data: result.result,
     });
   } catch (error) {
     next(error);
