@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import {
   createTaskServices,
+  deleteTaskServices,
   getAllTaskServices,
   getCompleteServices,
   getSingleTaskServices,
@@ -82,6 +83,21 @@ export const getSingleTask: RequestHandler = async (req, res, next) => {
       statusCode: httpStatus.OK,
       success: true,
       message: "Single Task Retrieve Successfully",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteTask: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteTaskServices(id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Task Deleted Successfully",
       data: result,
     });
   } catch (error) {

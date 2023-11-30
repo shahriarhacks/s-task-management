@@ -41,3 +41,7 @@ export const getSingleTaskServices = async (id: string) => {
   const result = await Task.findOne({ _id: id });
   return result;
 };
+export const deleteTaskServices = async (id: string) => {
+  const result = await Task.deleteOne({ _id: id });
+  return result;
+};
