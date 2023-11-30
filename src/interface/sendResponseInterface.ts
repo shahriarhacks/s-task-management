@@ -3,11 +3,5 @@ export interface ISendResponse<T> {
   success: boolean;
   message?: string | null;
   token?: string | null;
-  meta?: {
-    page: number;
-    limit: number;
-    skip: number;
-    total: number;
-  } | null;
   data?: T | null;
 }

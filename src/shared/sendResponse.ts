@@ -7,7 +7,6 @@ const sendResponse = <T>(res: Response, data: ISendResponse<T>): void => {
     success: data?.success,
     message: data?.message || null,
     token: data.token || null,
-    meta: data?.meta || null,
     data: data?.data || null,
   };
   res.status(data.statusCode).json(resData);
