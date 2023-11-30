@@ -5,6 +5,7 @@ import auth from "../../middlewares/auth";
 import {
   completeAllTask,
   createTask,
+  deleteTask,
   getAllTask,
   getSingleTask,
   updateTask,
@@ -18,6 +19,8 @@ router.post(
   auth("user"),
   createTask
 );
+router.get("/complete", auth("user"), completeAllTask);
+
 router.patch(
   "/:id",
   validateRequest(updateTaskZodSchema),
@@ -25,8 +28,8 @@ router.patch(
   updateTask
 );
 router.get("/:id", auth("user"), getSingleTask);
+router.delete("/:id", auth("user"), deleteTask);
 
 router.get("/", auth("user"), getAllTask);
-router.get("/complete", auth("user"), completeAllTask);
 
 export default router;

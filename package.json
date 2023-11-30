@@ -4,6 +4,8 @@
   "description": "Its Made by me Shahriar Ahmed",
   "main": "src/server.ts",
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc",
     "dev": "tsnd --respawn src/server.ts",
     "sas": "ts-node-dev --respawn --transpile-only src/server.ts"
   },
